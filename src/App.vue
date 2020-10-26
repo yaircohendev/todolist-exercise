@@ -1,11 +1,14 @@
 <template>
   <div id="app">
+    <div class="title">
+      <h1>My Todos</h1>
+    </div>
     <TodoList />
   </div>
 </template>
 
 <script>
-import TodoList from "@/TodoList";
+import TodoList from "@/components/todos/TodoList";
 export default {
   name: "App",
   components: { TodoList }
@@ -25,13 +28,17 @@ body {
   overflow: hidden;
 }
 body {
-  background-color: #bd4f6c;
-  background-image: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+.title {
+  margin-top: 30px;
+  color: #fff;
 }
 </style>
