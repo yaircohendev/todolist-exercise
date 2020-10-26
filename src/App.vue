@@ -28,8 +28,8 @@ body {
   overflow: hidden;
 }
 body {
-  background-color: #a4508b;
-  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  background-color: #d387ab;
+  background-image: linear-gradient(315deg, #d387ab 0%, #b279a7 74%);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

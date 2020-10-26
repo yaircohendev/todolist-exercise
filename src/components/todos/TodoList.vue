@@ -1,18 +1,20 @@
 <template>
   <div class="container">
     <TodoListMenu />
+    <TodoListItems />
   </div>
 </template>
 
 <script>
 import TodoListMenu from "@/components/todos/TodoListMenu";
+import TodoListItems from "@/components/todos/TodoListItems";
 export default {
   name: "TodoList",
-  components: { TodoListMenu }
+  components: { TodoListItems, TodoListMenu }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   position: fixed;
   top: 50%;
