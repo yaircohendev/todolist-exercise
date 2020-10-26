@@ -1,11 +1,14 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <TodoList />
+  </div>
 </template>
 
 <script>
+import TodoList from "@/TodoList";
 export default {
   name: "App",
-  components: {}
+  components: { TodoList }
 };
 </script>
 
@@ -22,8 +25,8 @@ body {
   overflow: hidden;
 }
 body {
-  background-color: #0093e9;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-color: #bd4f6c;
+  background-image: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
