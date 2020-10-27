@@ -18,21 +18,21 @@ export default {
       todos: []
     };
   },
-  methods: {
-    onChecked(e) {
-      console.log(e);
-    }
-  },
   created() {
     this.todos = [
       {
         id: Math.random(),
-        name: "Do this!",
+        name: "1!",
         isDone: true
       },
       {
         id: Math.random(),
-        name: "Do this!",
+        name: "2!",
+        isDone: true
+      },
+      {
+        id: Math.random(),
+        name: "3!",
         isDone: false
       }
     ];

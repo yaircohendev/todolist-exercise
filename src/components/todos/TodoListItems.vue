@@ -1,8 +1,10 @@
 <template>
   <div class="todos">
-    <div class="todo-item" v-for="(todo, i) of todos" :key="i">
-      <TodoListItem :todo="todo" />
-    </div>
+    <transition-group name="flip-list" tag="div">
+      <div class="todo-item" v-for="todo of sortedTodos" :key="todo.id">
+        <TodoListItem :todo="todo" />
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -11,6 +13,11 @@ import TodoListItem from "@/components/todos/TodoListItem";
 export default {
   name: "TodoListItems",
   components: { TodoListItem },
+  computed: {
+    sortedTodos() {
+      return [...this.todos].sort(item => (item.isDone ? +1 : -1));
+    }
+  },
   props: {
     todos: {
       required: true,
@@ -29,5 +36,8 @@ export default {
   .todo-item {
     margin: 20px 0;
   }
+}
+.flip-list-move {
+  transition: transform 0.5s;
 }
 </style>
