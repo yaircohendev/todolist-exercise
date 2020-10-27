@@ -23,6 +23,7 @@ export default {
     addTodo() {
       if (!this.todoName) return;
       this.$emit("add-todo", this.todoName);
+      this.todoName = "";
       this.$refs.inputComponent.$refs.baseInput.value = "";
     }
   },
