@@ -1,43 +1,64 @@
 <template>
-  <div :class="[{ 'todo-done': true }]">
-    <input type="checkbox" id="check" name="check" value="" />
-    <label for="check">
-      <span class="checkbox"></span>
-      <span :class="[{ 'todo-text-done': true }]">This is my first to do</span>
+  <div>
+    <input
+      @change="$emit('change', $event.target.checked)"
+      type="checkbox"
+      :id="id"
+      name="check"
+      :checked="checked"
+    />
+    <label :for="id">
+      <span class="checkbox-circle"></span>
+      <span :class="[{ 'checked-label': checked }]">{{ label }}</span>
     </label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BaseCheckbox"
+  name: "BaseCheckbox",
+  model: {
+    prop: "checked",
+    event: "change"
+  },
+  props: {
+    id: {
+      type: Number,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    checked: {
+      type: Boolean,
+      required: true
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
-$todo-color: rgba(0, 0, 0, 0.6);
+$color: rgba(0, 0, 0, 0.6);
 
-.todo-text-done {
+.checked-label {
   text-decoration: line-through;
-}
-.todo-done {
-  opacity: 0.6;
 }
 
 label {
   display: inline-block;
-  color: $todo-color;
+  color: $color;
   cursor: pointer;
   position: relative;
 
-  .checkbox {
+  .checkbox-circle {
     display: inline-block;
     position: relative;
     background-color: transparent;
     width: 25px;
     height: 25px;
     transform-origin: center;
-    border: 2px solid $todo-color;
+    border: 2px solid $color;
     border-radius: 50%;
     vertical-align: -6px;
     margin-right: 10px;
@@ -49,7 +70,7 @@ label {
       width: 0px;
       height: 2px;
       border-radius: 2px;
-      background: $todo-color;
+      background: $color;
       position: absolute;
       transform: rotate(45deg);
       top: 11px;
@@ -63,7 +84,7 @@ label {
       width: 0;
       height: 2px;
       border-radius: 2px;
-      background: $todo-color;
+      background: $color;
       position: absolute;
       transform: rotate(305deg);
       top: 15px;
@@ -76,7 +97,7 @@ label {
   // Time to add some life to it
 
   &:hover {
-    .checkbox {
+    .checkbox-circle {
       &:before {
         width: 5px;
         transition: width 100ms ease;
@@ -95,7 +116,7 @@ input[type="checkbox"] {
 
   &:checked {
     + label {
-      .checkbox {
+      .checkbox-circle {
         background-color: #fff;
 
         &:after {
@@ -112,7 +133,7 @@ input[type="checkbox"] {
       }
 
       &:hover {
-        .checkbox {
+        .checkbox-circle {
           background-color: #fff;
           transform: scale(1);
 

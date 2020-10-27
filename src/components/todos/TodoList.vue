@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <TodoListMenu />
-    <TodoListItems />
+    <TodoListItems :todos="todos" />
     <TodoListAdd />
   </div>
 </template>
@@ -12,7 +12,31 @@ import TodoListItems from "@/components/todos/TodoListItems";
 import TodoListAdd from "@/components/todos/TodoListAdd";
 export default {
   name: "TodoList",
-  components: { TodoListAdd, TodoListItems, TodoListMenu }
+  components: { TodoListAdd, TodoListItems, TodoListMenu },
+  data() {
+    return {
+      todos: []
+    };
+  },
+  methods: {
+    onChecked(e) {
+      console.log(e);
+    }
+  },
+  created() {
+    this.todos = [
+      {
+        id: Math.random(),
+        name: "Do this!",
+        isDone: true
+      },
+      {
+        id: Math.random(),
+        name: "Do this!",
+        isDone: false
+      }
+    ];
+  }
 };
 </script>
 
