@@ -1,4 +1,18 @@
-<template> <div></div></template>
+<template>
+  <div class="auth-page">
+    <div class="form">
+      <form class="login-form">
+        <input type="text" placeholder="username" />
+        <input type="password" placeholder="password" />
+        <button>login</button>
+        <p class="message">
+          Not registered?
+          <a @click="$router.push('register')">Create an account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</template>
 
 <script>
 import { Auth } from "@/firebase/auth";
@@ -24,4 +38,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@import "../../assets/scss/authentication.scss";
+</style>

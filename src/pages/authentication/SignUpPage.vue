@@ -1,5 +1,19 @@
 <template>
-  <div></div>
+  <div class="auth-page">
+    <form class="form">
+      <input type="text" placeholder="email address" v-model="email" />
+      <input type="password" placeholder="password" v-model="password" />
+      <input
+        type="password"
+        placeholder="confirm password"
+        v-model="confirmPass"
+      />
+      <button>create</button>
+      <p class="message">
+        Already registered? <a @click="$router.push('/login')">Sign In</a>
+      </p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -10,7 +24,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      confirmPass: ""
     };
   },
   methods: {
@@ -26,4 +41,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@import "../../assets/scss/authentication.scss";
+</style>
