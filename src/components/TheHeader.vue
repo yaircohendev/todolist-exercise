@@ -23,7 +23,6 @@ export default {
     async logoutUser() {
       try {
         await Auth.signOut();
-        this.user = "";
         await this.$router.push("/login");
       } catch (err) {
         console.error(err);
@@ -32,9 +31,8 @@ export default {
   },
   created() {
     Auth.onAuthStateChanged(user => {
-      console.log(user);
+      this.user = user;
     });
-    this.user = JSON.parse(sessionStorage.getItem("user"));
   }
 };
 </script>
