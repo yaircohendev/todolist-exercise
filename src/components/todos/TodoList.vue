@@ -2,15 +2,17 @@
   <div class="container">
     <TodoListMenu />
     <TodoListItems />
+    <TodoListAdd />
   </div>
 </template>
 
 <script>
 import TodoListMenu from "@/components/todos/TodoListMenu";
 import TodoListItems from "@/components/todos/TodoListItems";
+import TodoListAdd from "@/components/todos/TodoListAdd";
 export default {
   name: "TodoList",
-  components: { TodoListItems, TodoListMenu }
+  components: { TodoListAdd, TodoListItems, TodoListMenu }
 };
 </script>
 

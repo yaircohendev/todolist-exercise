@@ -100,13 +100,13 @@ input[type="checkbox"] {
 
         &:after {
           width: 10px;
-          background: #d387ab;
+          background: $primary-color;
           transition: width 150ms ease 100ms;
         }
 
         &:before {
           width: 5px;
-          background: #d387ab;
+          background: $primary-color;
           transition: width 150ms ease 100ms;
         }
       }
@@ -118,13 +118,13 @@ input[type="checkbox"] {
 
           &:after {
             width: 10px;
-            background: #d387ab;
+            background: $primary-color;
             transition: width 150ms ease 100ms;
           }
 
           &:before {
             width: 5px;
-            background: #d387ab;
+            background: $primary-color;
             transition: width 150ms ease 100ms;
           }
         }
