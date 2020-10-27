@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <TodoListMenu />
-    <TodoListItems :todos="todos" @delete-todo="deleteTodo" />
-    <TodoListAdd @add-todo="addTodo" />
+    <div class="title">
+      <h1>My Todos</h1>
+    </div>
+    <div class="todos-container">
+      <TodoListMenu />
+      <TodoListItems :todos="todos" @delete-todo="deleteTodo" />
+      <TodoListAdd @add-todo="addTodo" />
+    </div>
   </div>
 </template>
 
@@ -58,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.todos-container {
   position: fixed;
   top: 50%;
   left: 50%;
