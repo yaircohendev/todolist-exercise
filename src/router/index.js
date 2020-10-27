@@ -37,6 +37,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   Auth.onAuthStateChanged(user => {
+    sessionStorage.setItem("user", JSON.stringify(user));
     if (to.matched.some(route => route.meta.requiresAuth)) {
       if (user) next();
       else next({ path: "/login" });
