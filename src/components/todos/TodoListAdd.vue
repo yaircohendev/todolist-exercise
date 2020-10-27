@@ -1,7 +1,12 @@
 <template>
   <div class="add-todo">
-    <BaseInput />
-    <img src="../../assets/icons/plus-icon.svg" alt="icon" class="plus-icon" />
+    <BaseInput ref="inputComponent" v-model="todoName" />
+    <img
+      src="../../assets/icons/plus-icon.svg"
+      alt="icon"
+      class="plus-icon"
+      @click="addTodo"
+    />
   </div>
 </template>
 
@@ -9,6 +14,18 @@
 import BaseInput from "@/components/BaseInput";
 export default {
   name: "TodoListAdd",
+  data() {
+    return {
+      todoName: ""
+    };
+  },
+  methods: {
+    addTodo() {
+      if (!this.todoName) return;
+      this.$emit("add-todo", this.todoName);
+      this.$refs.inputComponent.$refs.baseInput.value = "";
+    }
+  },
   components: { BaseInput }
 };
 </script>

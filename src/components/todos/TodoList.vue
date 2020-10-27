@@ -2,7 +2,7 @@
   <div class="container">
     <TodoListMenu />
     <TodoListItems :todos="todos" @delete-todo="deleteTodo" />
-    <TodoListAdd />
+    <TodoListAdd @add-todo="addTodo" />
   </div>
 </template>
 
@@ -21,6 +21,15 @@ export default {
   methods: {
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    addTodo(todoName) {
+      const newTodo = {
+        id: Math.random(),
+        name: todoName,
+        isDone: false,
+        createdTime: new Date()
+      };
+      this.todos = [...this.todos, newTodo];
     }
   },
   created() {
@@ -28,17 +37,20 @@ export default {
       {
         id: Math.random(),
         name: "1!",
-        isDone: true
+        isDone: true,
+        createdTime: new Date()
       },
       {
         id: Math.random(),
         name: "2!",
-        isDone: true
+        isDone: true,
+        createdTime: new Date()
       },
       {
         id: Math.random(),
         name: "3!",
-        isDone: false
+        isDone: false,
+        createdTime: new Date()
       }
     ];
   }

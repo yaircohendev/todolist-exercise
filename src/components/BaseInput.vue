@@ -1,6 +1,12 @@
 <template>
   <div class="input-container">
-    <input id="name" class="input" type="text" pattern=".+" required />
+    <input
+      ref="baseInput"
+      @input="$emit('input', $event.target.value)"
+      id="name"
+      class="input"
+      type="text"
+    />
     <label class="label" for="name">{{ label }}</label>
   </div>
 </template>
