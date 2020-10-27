@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <TodoListMenu />
-    <TodoListItems :todos="todos" />
+    <TodoListItems :todos="todos" @delete-todo="deleteTodo" />
     <TodoListAdd />
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
     return {
       todos: []
     };
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    }
   },
   created() {
     this.todos = [

@@ -2,7 +2,10 @@
   <div class="todos">
     <transition-group name="flip-list" tag="div">
       <div class="todo-item" v-for="todo of sortedTodos" :key="todo.id">
-        <TodoListItem :todo="todo" />
+        <TodoListItem
+          :todo="todo"
+          @delete-todo="$emit('delete-todo', $event)"
+        />
       </div>
     </transition-group>
   </div>
