@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div :class="[{ 'todo-done': true }]">
     <input type="checkbox" id="check" name="check" value="" />
     <label for="check">
-      <span></span>
-      Todo
+      <span class="checkbox"></span>
+      <span :class="[{ 'todo-text-done': true }]">This is my first to do</span>
     </label>
   </div>
 </template>
@@ -17,13 +17,20 @@ export default {
 <style scoped lang="scss">
 $todo-color: rgba(0, 0, 0, 0.6);
 
+.todo-text-done {
+  text-decoration: line-through;
+}
+.todo-done {
+  opacity: 0.6;
+}
+
 label {
   display: inline-block;
   color: $todo-color;
   cursor: pointer;
   position: relative;
 
-  span {
+  .checkbox {
     display: inline-block;
     position: relative;
     background-color: transparent;
@@ -69,7 +76,7 @@ label {
   // Time to add some life to it
 
   &:hover {
-    span {
+    .checkbox {
       &:before {
         width: 5px;
         transition: width 100ms ease;
@@ -83,15 +90,12 @@ label {
   }
 }
 
-input[type="checkbox"]:checked + label {
-  text-decoration: overline;
-}
 input[type="checkbox"] {
   display: none;
 
   &:checked {
     + label {
-      span {
+      .checkbox {
         background-color: #fff;
 
         &:after {
@@ -108,7 +112,7 @@ input[type="checkbox"] {
       }
 
       &:hover {
-        span {
+        .checkbox {
           background-color: #fff;
           transform: scale(1);
 
