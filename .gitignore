@@ -23,6 +23,6 @@ pnpm-debug.log*
 *.sw?
 
 # ignore env
-.env
-.env.development.local
-.env.production.local
+#.env
+#.env.development.local
+#.env.production.local
