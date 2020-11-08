@@ -23,6 +23,7 @@
 import { Auth } from "@/firebase/auth";
 import ErrorBar from "@/components/ErrorBar";
 import validate from "../../modules/validation-module";
+const axios = require("axios").default;
 
 export default {
   name: "SignUpPage",
@@ -48,6 +49,9 @@ export default {
 
         if (!this.errors.length) {
           await Auth.createUserWithEmailAndPassword(this.email, this.password);
+          await axios.post(`${process.env.VUE_APP_BASE_URL}/users`, {
+            email: this.email
+          });
           await this.$router.push("/");
         }
       } catch (err) {

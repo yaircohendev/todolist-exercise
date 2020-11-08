@@ -1,19 +1,28 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("./queries");
+app.use(cors());
 
-app.get("/", (request, response) => {
-  response.json({ info: "Node.js, Express, and Postgres API" });
+require("dotenv").config();
+
+const mongoose = require("mongoose");
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
-app.get("/users", db.getUsers);
-app.get("/users/:id", db.getUserById);
-app.post("/users", db.createUser);
-app.put("/users/:id", db.updateUser);
-app.delete("/users/:id", db.deleteUser);
+const mongo = mongoose.connection;
+mongo.on("error", error => console.log(error));
+mongo.once("open", () => console.log("connection to db established"));
 
-app.listen(3000, () => console.log("Listening on port 3000"));
+const userRoutes = require("./routes/users");
+
+app.use("/users", userRoutes);
+
+app.listen(process.env.PORT, () =>
+  console.log(`server has started at port ${process.env.PORT}`)
+);
