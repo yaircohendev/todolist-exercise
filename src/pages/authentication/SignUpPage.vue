@@ -48,9 +48,13 @@ export default {
         }
 
         if (!this.errors.length) {
-          await Auth.createUserWithEmailAndPassword(this.email, this.password);
+          const res = await Auth.createUserWithEmailAndPassword(
+            this.email,
+            this.password
+          );
           await axios.post(`${process.env.VUE_APP_BASE_URL}/users`, {
-            email: this.email
+            email: this.email,
+            firebaseUID: res.user.uid
           });
           await this.$router.push("/");
         }

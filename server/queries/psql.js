@@ -24,14 +24,14 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
   const { email } = req.body;
-  pool.query(
+  await pool.query(
     "INSERT INTO users (email) VALUES ($1)",
     [email],
     (error, result) => {
       if (error) {
         throw error;
       }
-      res.status(201).send(`User added with ID: ${result.insertId}`);
+      return result;
     }
   );
 };

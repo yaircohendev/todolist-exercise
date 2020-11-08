@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const EmailsMap = require("../models/emailsMap");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -14,12 +15,14 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const user = new User({
-    email: req.body.email
-  });
+  const { email, firebaseUID } = req.body;
+  const user = new User({ email });
   try {
-    const newUser = await user.save();
-    res.status(201).json({ newUser });
+    const results = await user.save();
+    const userId = results._id;
+    const map = new EmailsMap();
+    await map.emails.set(firebaseUID, userId);
+    return await map.save();
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
