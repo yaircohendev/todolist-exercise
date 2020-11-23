@@ -1,11 +1,15 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <TheHeader />
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
+import TheHeader from "@/components/TheHeader";
 export default {
   name: "App",
-  components: {}
+  components: { TheHeader }
 };
 </script>
 
@@ -22,13 +26,17 @@ body {
   overflow: hidden;
 }
 body {
-  background-color: #0093e9;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  background-color: $primary-color;
+  background-image: linear-gradient(315deg, $primary-color 0%, #b279a7 74%);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+.title {
+  margin-top: 30px;
+  color: #fff;
 }
 </style>
